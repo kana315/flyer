@@ -1,0 +1,30 @@
+ja:
+  activerecord:
+    models:
+      post: "投稿"
+      user: "ユーザー"
+    attributes:
+      post:
+        title: "タイトル"
+        flyer_front: "チラシ前面"
+        flyer_back: "チラシ後面"
+        caption: "キャプション"
+        story: "あらすじ"
+        member: "メンバー"
+        ticket: "チケット"
+        start_date: "開幕日"
+        end_date: "閉幕日"
+        details_datetime: "日時詳細"
+        address_zipcode: "郵便番号"
+        address_prefecture_name: "都道府県"
+        address_city: "市町村・町域"
+        address_street: "番地"
+        address_bullding: "建物"
+        details_access: "アクセス詳細"
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        current_password: "現在のパスワード"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "ログインを記憶"

@@ -1,0 +1,36 @@
+<li class="col-xs-offset-2 col-xs-8 col-sm-offset-0 col-sm-4 col-md-offset-0 col-md-3">
+  <div class="user_area">
+    <% if current_user.id == @troupe.user_id %>
+      <h1><%= @troupe.name %></h1>
+      <p><%= image_tag @troupe.icon %></p>
+      <p><%= simple_format(@troupe.caption) %></p>
+      <%= link_to "編集", edit_troupe_path(@troupe.id), class:"btn btn-warning" %>
+    <% else %>
+      <h3><%= @troupe.name %></h3>
+      <p><%= image_tag @troupe.icon %></p>
+      <p><%= simple_format(@troupe.caption) %></p>
+
+      <% if @troupe_following.present? %>
+        <%= link_to "フォロー解除", troupe_following_path(@troupe_following.id),
+            method: :delete, class:"btn delete_button" %>
+      <% else %>
+        <%= link_to "フォローする", troupe_followings_path(troupe_id: @troupe.id),
+            method: :post, class:"btn btn-primary" %>
+      <% end %>
+      <br>
+      <%= link_to "メンバー申請", member_request_troupe_path(@troupe.id) %>
+    <% end %>
+  </div>
+</li>
+
+<li class="col-xs-12 col-sm-8 col-md-9">
+  <div class="user_index">
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="<%= 'active' if action_name == 'posts' %>"><%= link_to '投稿一覧', troupe_posts_path %></li>
+        <li role="presentation" class="<%= 'active' if action_name == 'member_relations' %>"><%= link_to 'メンバー一覧', member_relations_troupe_path %></li>
+        <% if current_user.id == @troupe.user_id %>
+        <li role="presentation" class="<%= 'active' if action_name == 'waiting_members' %>"><%= link_to 'メンバー申請', waiting_members_troupe_path %></li>
+        <% end %>
+      </ul>
+  </div>
+</li>

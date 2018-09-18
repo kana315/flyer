@@ -1,0 +1,15 @@
+<article class="article">
+  <% if current_user.member_relations.find_by(troupe_id: @troupe.id).present? %>
+    <h3 class="title"><%= @troupe.name %>のメンバー解除しますか？</h3>
+    <%= link_to 'メンバー解除する', member_relation_path(id: @member_relation),
+        method: :delete, class:"btn delete_button" %>
+  <% elsif current_user.member_requests.find_by(troupe_id: @troupe.id).present? %>
+    <h3 class="title"><%= @troupe.name %>へのメンバー申請を取り消しますか?</h3>
+    <%= link_to 'メンバー申請を取り消す', member_request_path(id: @member_request),
+        method: :delete, class:"btn delete_button" %>
+  <% else %>
+    <h3><%= @troupe.name %>にメンバー申請しますか？</h3>
+    <%= link_to 'メンバー申請', member_requests_path(troupe_id: @troupe.id),
+        method: :post, class:"btn btn-primary" %>
+  <% end %>
+</div>

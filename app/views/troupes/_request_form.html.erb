@@ -1,0 +1,5 @@
+<%= if current_user.members?(@user) %>
+  <p>メンバー解除</p>
+<% else %>
+  <p>メンバー登録</p>
+<% end %>

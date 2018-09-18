@@ -1,0 +1,29 @@
+<div class="container">
+  <ul class="row">
+    <%= render 'user_nav' %>
+
+    <li class="col-xs-12 col-sm-8 col-md-9">
+      <div class="article user_index">
+        <% if @admin_troupes.present? ||  @member_troupes.present? %>
+          <div class="troupe_index">
+            <% @admin_troupes.each do |troupe| %>
+              <div class="troupe_area">
+                <%= image_tag troupe.icon, class:"troupe_section" %><br>
+                <%= link_to troupe.name, troupe_path(troupe.id), class:"troupe_name" %>
+                <%= link_to '劇団管理', troupe_path(troupe.id), class:"admin_link" %>
+              </div>
+            <% end %>
+            <% @member_troupes.each do |troupe| %>
+              <div class="troupe_area">
+              <%= image_tag troupe.icon, class:"troupe_section" %><br>
+              <%= link_to troupe.name, troupe_path(troupe.id), class:"troupe_name" %>
+              </div>
+          <% end %>
+          </div>
+        <% else %>
+          <p>所属している劇団はありません。<p>
+        <% end %>
+        </div>
+    </li>
+  </ul>
+</div>

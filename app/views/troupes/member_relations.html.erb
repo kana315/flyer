@@ -1,0 +1,23 @@
+<ul class="row">
+  <%= render 'troupe_nav' %>
+  <li class="col-xs-12 col-sm-8 col-md-9">
+    <div class="user_index">
+      <div class="troupe_area">
+        <%= image_tag @troupe_admin.icon, class:"troupe_section" %>
+        <%= link_to @troupe_admin.name, user_path(@troupe_admin.id), class:"troupe_name" %>
+      </div>
+      <% if @members.present? %>
+        <% @members.each do |member| %>
+          <div class="troupe_area">
+            <%= image_tag member.user.icon, class:"troupe_section" %>
+            <%= link_to "#{member.user.name}", user_path(member.id), class:"troupe_name" %>
+            <% if current_user.id == @troupe.user_id %>
+              <%= link_to "メンバー解除", member_relation_path(member.id),
+                  method: :delete, class:"btn delete_button" %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </li>
+</ul>

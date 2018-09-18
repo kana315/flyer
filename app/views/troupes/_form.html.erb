@@ -1,0 +1,30 @@
+<%= form_with(model: @troupe, local: true, url: choose_new_or_edit) do |f| %>
+  <% if @troupe.errors.any? %>
+    <ul>
+      <% @troupe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <table class="form_table">
+  <tr>
+    <th><%= f.label :name %></th>
+    <td><%= f.text_field :name, class:"form-control" %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :caption %></th>
+    <td><%= f.text_area :caption, class:"form-control"  %></td>
+  </tr>
+  <tr>
+      <th><%= f.label :icon %></th>
+      <td><%= f.file_field :icon %></td>
+  </tr>
+  <tr>
+      <th><%= f.label :admin_user_id %></th>
+      <td><%= current_user.name %></td>
+  </tr>
+  </table>
+  <%= f.submit "登録", class: "form_button" %>
+  </table>
+<% end %>

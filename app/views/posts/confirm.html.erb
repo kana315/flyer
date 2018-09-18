@@ -1,0 +1,106 @@
+<div class="article">
+  <h2 class="title">確認画面</h2>
+
+  <%= form_with(model:@post, local:@post, url:posts_path) do |f| %>
+    <%= f.hidden_field :title %>
+    <%= f.hidden_field :troupe_id %>
+    <%= f.hidden_field :flyer_front_cache %>
+    <%= f.hidden_field :flyer_back_cache %>
+    <%= f.hidden_field :caption %>
+    <%= f.hidden_field :story %>
+    <%= f.hidden_field :member %>
+    <%= f.hidden_field :ticket %>
+    <%= f.hidden_field :start_date %>
+    <%= f.hidden_field :end_date %>
+    <%= f.hidden_field :details_datetime %>
+    <%= f.hidden_field :address_zipcode %>
+    <%= f.hidden_field :address_prefecture_name %>
+    <%= f.hidden_field :address_city %>
+    <%= f.hidden_field :address_street %>
+    <%= f.hidden_field :address_bullding %>
+    <%= f.hidden_field :details_access %>
+
+    <table class="form_table">
+      <tr>
+        <th>劇団名</th>
+        <td><%= find_troupe(@post) %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :title %></th>
+        <td><%= simple_format(@post.title) %></td>
+      </tr>
+      <tr>
+        <th>投稿するチラシ</th>
+        <td>
+          <%= image_tag @post.flyer_front %>
+          <%= image_tag @post.flyer_back %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :caption %></th>
+        <td><%= simple_format(@post.caption) %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :story %></th>
+        <td><%= simple_format(@post.story) %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :member %></th>
+        <td><%= simple_format(@post.member) %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :ticket %></th>
+        <td><%= simple_format(@post.ticket) %></td>
+      </tr>
+      <tr>
+        <th>公演日程</th>
+        <td>
+          <%= @post.start_date %>
+          <% if @post.end_date.present? %>
+            ～<%= @post.end_date %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :details_datetime %></th>
+        <td><%= simple_format(@post.details_datetime) %></td>
+      </tr>
+      <tr>
+        <th>公演場所</th>
+        <td>
+          <%= @post.address_zipcode %>
+          <%= @post.address_prefecture_name %>
+          <%= @post.address_city %>
+          <%= @post.address_street %>
+          <%= @post.address_bullding %>
+        </td>
+      </tr>
+      <tr>
+        <th>アクセス詳細</th>
+        <td><%= simple_format(@post.details_access) %></td>
+    </table>
+
+    <%= f.submit "投稿", class: "form_button" %>
+  <% end %>
+
+  <%= form_with(model: @post, local: true, url: new_post_path, method:'get') do |f| %>
+    <%= f.hidden_field :title %>
+    <%= f.hidden_field :troupe_id %>
+    <%= f.hidden_field :flyer_front_cache %>
+    <%= f.hidden_field :flyer_back_cache %>
+    <%= f.hidden_field :caption %>
+    <%= f.hidden_field :story %>
+    <%= f.hidden_field :member %>
+    <%= f.hidden_field :ticket %>
+    <%= f.hidden_field :start_date %>
+    <%= f.hidden_field :end_date %>
+    <%= f.hidden_field :details_datetime %>
+    <%= f.hidden_field :address_zipcode %>
+    <%= f.hidden_field :address_prefecture_name %>
+    <%= f.hidden_field :address_city %>
+    <%= f.hidden_field :address_street %>
+    <%= f.hidden_field :address_bullding %>
+    <%= f.hidden_field :details_access %>
+    <%= f.submit '戻る', name:'back', class:"back_button" %>
+  <% end %>
+</div>

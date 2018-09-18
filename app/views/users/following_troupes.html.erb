@@ -1,0 +1,22 @@
+<div class="container">
+  <ul class="row">
+    <%= render 'user_nav' %>
+
+    <li class="col-xs-12 col-sm-8 col-md-9">
+      <div class="article user_index">
+        <% if @following_troupes.present? %>
+          <div class="troupe_index">
+            <% @following_troupes.each do |troupe| %>
+              <div class="troupe_area">
+                <%= image_tag troupe.icon, class:"troupe_section" %>
+                <%= link_to troupe.name, troupe_path(troupe.id), class:"troupe_name" %>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <p>フォローしている劇団はありません。<p>
+        <% end %>
+      </div>
+    </li>
+  </ul>
+</div>

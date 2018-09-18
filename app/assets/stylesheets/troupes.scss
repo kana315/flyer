@@ -1,0 +1,86 @@
+
+.troupe_index {
+  margin: auto;
+  text-align: center;
+}
+
+.troupe_name{
+  display: block;
+  font-size: 20px;
+  margin-top: 5px;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.troupe_area {
+  display: inline-block;
+  width: 120px;
+  margin: 10px;
+  padding: 10px;
+  vertical-align: top;
+}
+
+.admin_link{
+  font-size: 12px;
+  color: #696969;
+  border-bottom: solid 1px #696969;
+  padding: 2px;
+}
+
+.admin_link:hover{
+  color: #ffffff;
+  border-color: #a0a0a0;
+  background-color: #6a6a6a;
+  text-decoration: none;
+}
+
+.user_section img{
+  border: solid 2px #000;
+  border-radius: 20px;
+  height: 40px;
+  width: 40px;
+}
+
+.btn-success {
+  margin: 3px;
+}
+
+.user_post_index {
+  width: 131px;
+  margin: 20px 10px;
+  display: inline-block;
+  border-bottom: solid 1px #e0e0e0;
+  vertical-align: top;
+  text-align: left;
+  background-color: #ffffff;
+}
+
+.user_post_index img {
+  display: table-cell;
+  max-width: 131px;
+  height: auto;
+}
+
+.post_link {
+  width: 120px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  font-size: 18px;
+  margin: 0px 5px;
+  bottom: 0;
+}
+
+.troupe_link {
+  width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  font-size: 14px;
+  color: #808080;
+  font-weight: 100;
+  margin: 0px 5px;
+}

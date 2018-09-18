@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flyer</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <p class="notice top_notice"><%= notice %></p>
+
+  <body class="top-body">
+    <div class="top-font clearfix">
+      <%= link_to 'Flyer!', root_path, class: "top-brand clearfix" %>
+        <div class="top-navbar">
+          <%= link_to '新規登録', new_user_registration_path %>
+          <%= link_to 'ログイン', new_user_session_path %>
+        </div>
+    </div>
+    <%= yield %>
+  </body>
+</html>

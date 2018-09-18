@@ -1,0 +1,103 @@
+<%= form_with(model:@post, local: true, url: post_url_choose_new_or_edit) do |f| %>
+  <% if @post.errors.any? %>
+    <ul>
+    <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <table class="form_table">
+    <tr>
+      <th>劇団名</th>
+      <td>
+        <% if action_name == 'edit' %>
+          <%= @troupe.name %>
+        <% elsif action_name == 'new' %>
+          <%= f.collection_select :troupe_id, @troupes, :id, :name %>
+        <% else %>
+          <%= f.hidden_field :troupe_id %>
+          <%= find_troupe(@post) %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th><%= f.label :title %></th>
+      <td><%= f.text_field :title, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :flyer_front %></th>
+      <td>
+        <%= image_tag(@post.flyer_front.url) if @post.flyer_front.url %>
+        <%= f.file_field :flyer_front %>
+        <%= f.hidden_field :flyer_front_cache %>
+      </td>
+    </tr>
+    <tr>
+      <th><%= f.label :flyer_back %></th>
+      <td>
+        <%= image_tag(@post.flyer_back.url) if @post.flyer_back.url %>
+        <%= f.file_field :flyer_back %>
+        <%= f.hidden_field :flyer_back_cache %>
+      </td>
+    </tr>
+    <tr>
+      <th><%= f.label :caption %></th>
+      <td><%= f.text_field :caption, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :story %></th>
+      <td><%= f.text_area :story, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :member %></th>
+      <td><%= f.text_area :member, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :ticket %></th>
+      <td><%= f.text_area :ticket, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :start_date %></th>
+      <td><%= f.date_select :start_date %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :end_date %></th>
+      <td><%= f.date_select :end_date, :include_blank => true %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :details_datetime %></th>
+      <td><%= f.text_area :details_datetime, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th>公演場所</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th><%= f.label :address_zipcode %></th>
+      <td><%= f.text_field :address_zipcode, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :address_prefecture_name %></th>
+      <td><%= f.text_field :address_prefecture_name, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :address_city %></th>
+      <td><%= f.text_field :address_city, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :address_street %></th>
+      <td><%= f.text_field :address_street, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :address_bullding %></th>
+      <td><%= f.text_field :address_bullding, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th class="form-bottom"><%= f.label :details_access %></th>
+      <td class="form-bottom"><%= f.text_area :details_access, class: "form-control" %></td>
+    </tr>
+  </table>
+  <div>
+    <%= f.submit "投稿", class: "form_button" %>
+  </div>
+<% end %>

@@ -1,0 +1,18 @@
+<ul class="row">
+  <%= render 'troupe_nav' %>
+  <li class="col-xs-12 col-sm-8 col-md-9">
+    <div class="user_index">
+      <% if @posts.present? %>
+        <% @posts.each do |post| %>
+          <div class="user_post_index">
+            <%= link_to image_tag(post.flyer_front), post_path(post.id) %>
+            <%= link_to post.title, post_path(post.id), class:"post_link"%><br>
+            <%= link_to post.troupe.name, troupe_path(post.troupe.id), class:"troupe_link" %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>投稿はありません</p>
+      <% end %>
+    </div>
+  </li>
+</ul>

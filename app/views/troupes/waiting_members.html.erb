@@ -1,0 +1,19 @@
+<ul class="row">
+  <%= render 'troupe_nav' %>
+  <li class="col-xs-12 col-sm-8 col-md-9">
+    <div class="user_index">
+      <% if @member_requests.present? %>
+        <% @member_requests.each do |request| %>
+          <div class="troupe_area">
+              <%= image_tag request.user.icon, class:"troupe_section" %>
+              <%= link_to request.user.name, user_path(request.user_id), class:"troupe_name" %>
+              <%= link_to 'メンバー登録', member_relations_path(troupe_id: @troupe.id, user_id:request.user),
+                method: :post, class:"btn btn-success index-btn" %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>申請待ちメンバーはいません</p>
+      <% end %>
+    </div>
+  </li>
+</ul>

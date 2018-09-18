@@ -1,0 +1,28 @@
+<h2>投稿一覧</h2>
+
+<div class="search_area">
+  <%= search_form_for @q do |f| %>
+    <div class="search-form">
+      <%= f.text_field :keywords, required: false, value: params.dig(:q, :keywords), class: "form-control" %>
+    </div>
+    <%= f.submit "検索", class: "search-button" %>
+  <% end %>
+</div>
+
+<div class="index_area">
+  <% if @result.any? %>
+    <% @result.each do |result| %>
+      <div class="user_post_index">
+        <%= link_to image_tag(result.flyer_front), post_path(result.id) %>
+        <%= link_to result.title, post_path(result.id), class:"post_link"%><br>
+        <%= link_to result.troupe.name, troupe_path(result.troupe.id), class:"troupe_link" %>
+      </div>
+    <% end %>
+  <% else %>
+      <p>見つかりませんでした。</p>
+  <% end %>
+
+  <div class="paginate-bottom">
+    <%= paginate @result %>
+  </div>
+</div>

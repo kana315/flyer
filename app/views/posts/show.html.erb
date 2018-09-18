@@ -1,0 +1,94 @@
+<article class="flyer_article container">
+  <ul class="row">
+    <li class="col-xs-12 col-sm-8 col-md-offset-1 col-md-7">
+      <div class="flyer">
+        <div id="flyer-tab">
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+              <%= image_tag @post.flyer_front %>
+            </div>
+            <div class="tab-pane" id="tab2">
+              <%= image_tag @post.flyer_back %>
+            </div>
+          </div>
+        </div>
+        <% if @post.flyer_back.present? %>
+          <ul class="pager">
+            <li class="active"><a href="#tab1" data-toggle="tab">＜</a></li>
+            <li><a href="#tab2" data-toggle="tab">＞</a></li>
+          </ul>
+        <% end %>
+      </div>
+    </li>
+
+    <li class="col-xs-12 col-sm-4 col-md-2">
+      <div class="side_article">
+        <p>
+          <%= image_tag @post.troupe.icon, class:"troupe_section" %>
+          <%= link_to find_troupe(@post), troupe_path(@post.troupe.id) %>
+        </p>
+        <h3><%= @post.title %></h3>
+        <p><%= simple_format(@post.caption) %></p>
+        <% if current_user.id == @post.troupe.user_id %>
+          <%= link_to "編集", edit_post_path(@post.id), class:"btn btn-warning" %>
+          <%= link_to "削除", post_path(@post.id), method: :delete, class:"btn btn-danger",
+                              data: {confirm: '本当に削除していいですか？'} %>
+        <% else %>
+          <% if @favorite.present? %>
+            <%= link_to "お気に入り解除", favorite_path(@favorite.id), method: :delete, class:"btn btn-delete" %>
+          <% else %>
+            <%= link_to "お気に入り登録", favorites_path(post_id: @post.id), method: :post, class:"btn btn-warning" %>
+          <% end %>
+        <% end %>
+        <p class="divider"></p>
+        <p>お気に入り<%= @favorites.count %>件</p>
+      </div>
+    </li>
+
+    <li class="col-xs-12 col-sm-7 col-md-offset-1 col-md-7">
+      <nav class="flyer_nav clearfix">
+          <p class="flyer_tag"><a href="#tag1">あらすじ</a></p>
+          <p class="flyer_tag"><a href="#tag2">キャスト・スタッフ</a></p>
+          <p class="flyer_tag"><a href="#tag3">チケット</a></p>
+          <p class="flyer_tag"><a href="#tag4">日時</a></p>
+          <p><a href="#tag5">アクセス</a></p>
+        </nav>
+    </li>
+
+    <li class="col-xs-12 col-sm-7 col-md-offset-1 col-md-7">
+      <div class="details_article">
+          <div class="article_item">
+            <h4 class="title"><a name="tag1">あらすじ</a></h4>
+            <%= simple_format(@post.story) %>
+          </div>
+          <div class="article_item">
+            <h4 class="title"><a name="tag2">キャスト・スタッフ</a></h4>
+            <%= simple_format(@post.member) %>
+          </div>
+          <div class="article_item">
+            <h4 class="title"><a name="tag3">チケット</a></h4>
+            <%= simple_format(@post.ticket) %>
+          </div>
+          <div class="article_item">
+            <h4 class="title"><a name="tag4">日時</a></h4>
+            <p>
+              <%= @post.start_date %>
+              <% if @post.end_date.present? %>
+                <%= @post.end_date %>
+              <% end %>
+            </p>
+            <p><%= simple_format(@post.details_datetime) %></p>
+          </div>
+          <div class="article_item">
+            <h4 class="title"><a name="tag5">アクセス</a></h4>
+            <p><%= @post.address_zipcode %></p>
+            <p><%= @post.address_prefecture_name %></p>
+            <p><%= @post.address_city %></p>
+            <p><%= @post.address_street %></p>
+            <p><%= @post.address_bullding %></p>
+            <p><%= simple_format(@post.details_access) %></p>
+          </div>
+        </div>
+    </li>
+  </ul>
+</article>
