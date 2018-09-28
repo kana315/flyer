@@ -268,7 +268,7 @@ textarea {
 
 .user_area {
   background-color: #ffffff;
-  padding: 10px;
+  padding: 20px 10px;
   margin: 2px;
 }
 
@@ -282,6 +282,10 @@ textarea {
   margin: 3px;
   word-wrap: break-word;
   white-space: pre-wrap;
+}
+
+.user_area h1{
+  margin: 5px;
 }
 
 .container {

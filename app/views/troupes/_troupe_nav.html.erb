@@ -1,13 +1,13 @@
 <li class="col-xs-offset-2 col-xs-8 col-sm-offset-0 col-sm-4 col-md-offset-0 col-md-3">
   <div class="user_area">
     <% if current_user.id == @troupe.user_id %>
-      <h1><%= @troupe.name %></h1>
       <p><%= image_tag @troupe.icon %></p>
+      <h1><%= @troupe.name %></h1>
       <p><%= simple_format(@troupe.caption) %></p>
       <%= link_to "編集", edit_troupe_path(@troupe.id), class:"btn btn-warning" %>
     <% else %>
-      <h3><%= @troupe.name %></h3>
       <p><%= image_tag @troupe.icon %></p>
+      <h3><%= @troupe.name %></h3>
       <p><%= simple_format(@troupe.caption) %></p>
 
       <% if @troupe_following.present? %>

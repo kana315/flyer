@@ -1,5 +1,5 @@
 class TroupesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :members, :member_request]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :member_request, :posts, :member_relations, :waiting_members]
   before_action :set_troupe, only: [:edit, :update, :members, :member_request, :posts, :member_relations, :waiting_members]
   before_action :access_restriction, only: [:edit, :update]
 
@@ -34,7 +34,9 @@ class TroupesController < ApplicationController
   end
 
   def posts
-    @troupe_following = current_user.troupe_followings.find_by(troupe_id: @troupe.id)
+    if current_user.present?
+      @troupe_following = current_user.troupe_followings.find_by(troupe_id: @troupe.id)
+    end
     @posts = @troupe.posts
   end
 
@@ -47,11 +49,6 @@ class TroupesController < ApplicationController
   def waiting_members
     @troupe_following = current_user.troupe_followings.find_by(troupe_id: @troupe.id)
     @troupe_admin = User.find_by(id: @troupe.user_id)
-    @member_requests = MemberRequest.where(troupe_id: @troupe.id)
-  end
-
-  def members
-    @member_relations = MemberRelation.where(troupe_id: @troupe.id)
     @member_requests = MemberRequest.where(troupe_id: @troupe.id)
   end
 

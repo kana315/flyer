@@ -54,7 +54,9 @@ class PostsController < ApplicationController
   end
 
   def show
-    @favorite = current_user.favorites.find_by(post_id: params[:id])
+    if current_user.present?
+      @favorite = current_user.favorites.find_by(post_id: params[:id])
+    end
     @favorites = @post.favorites
   end
 
