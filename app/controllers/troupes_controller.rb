@@ -19,7 +19,7 @@ class TroupesController < ApplicationController
 
   def index
     @q = Troupe.with_keywords(params.dig(:q, :keywords)).ransack(params[:q])
-    @result = @q.result.page(params[:page]).per(10)
+    @result = @q.result.page(params[:page]).per(10).order("id DESC")
   end
 
   def edit

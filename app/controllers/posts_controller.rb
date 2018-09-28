@@ -7,12 +7,7 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.with_keywords(params.dig(:q, :keywords)).ransack(params[:q])
-    @result = @q.result.page(params[:page]).per(24)
-  end
-
-  def search
-    @q = Post.search(search_params)
-    @result = @q.result(distinct: true)
+    @result = @q.result.page(params[:page]).per(24).order("id DESC")
   end
 
   def new
