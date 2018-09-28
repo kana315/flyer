@@ -5,10 +5,10 @@
         <div id="flyer-tab">
           <div class="tab-content">
             <div class="tab-pane active" id="tab1">
-              <%= image_tag @post.flyer_front %>
+              <%= link_to image_tag(@post.flyer_front, class:"flyer_img"), image_path(@post.flyer_front), target:"_blanck" %>
             </div>
             <div class="tab-pane" id="tab2">
-              <%= image_tag @post.flyer_back %>
+              <%= link_to image_tag(@post.flyer_back, class:"flyer_img"), image_path(@post.flyer_back), target:"_blanck" %>
             </div>
           </div>
         </div>
