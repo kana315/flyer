@@ -75,6 +75,13 @@ li {
   margin:0;
 }
 
+@media (max-width: 767px){
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+      color: #000000;
+      text-align: center;
+  }
+}
+
 /*top*/
 .top-body {
   width: auto;
