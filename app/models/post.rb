@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   validates :member, presence: true, length: { maximum: 255 }
   validates :ticket, presence: true, length: { maximum: 255 }
   validates :details_datetime, presence: true, length: { maximum: 255 }
+  validate :start_date_cannot_be_latter_than_end_date
 
   belongs_to :troupe
 
@@ -25,4 +26,12 @@ class Post < ApplicationRecord
     end
   }
 
+  private
+  def start_date_cannot_be_latter_than_end_date
+    if end_date.present?
+      if start_date > end_date
+        errors.add(:start_date, "：終了日時より後に設定することはできません。")
+      end
+    end
+  end
 end
