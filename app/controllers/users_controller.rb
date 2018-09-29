@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user
+  before_action :set_request_troupes
 
   def posts
     @admin_troupes = @user.troupes
@@ -19,11 +20,14 @@ class UsersController < ApplicationController
   end
 
   def member_requests
-    @request_troupes = @user.request_troupes
   end
 
   private
   def set_user
     @user = User.find_by(id: params[:id])
+  end
+
+  def set_request_troupes
+    @request_troupes = @user.request_troupes
   end
 end
