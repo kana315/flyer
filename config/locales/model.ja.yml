@@ -28,3 +28,9 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+        icon: "アイコン"
+      troupe:
+        name: "劇団名"
+        caption: "キャプション"
+        icon: "アイコン"
+        admin_user_id: "管理者"

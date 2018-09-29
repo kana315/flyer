@@ -12,7 +12,7 @@
             <li role="presentation" class="<%= 'active' if action_name == 'favorites' %>"><%= link_to 'お気に入り', user_favorites_path %></li>
             <li role="presentation" class="<%= 'active' if action_name == 'troupes' %>"><%= link_to '所属劇団', user_troupes_path %></li>
             <li role="presentation" class="<%= 'active' if action_name == 'following_troupes' %>"><%= link_to 'フォロー劇団', user_following_troupes_path %></li>
-            <li role="presentation" class="<%= 'active' if action_name == 'member_requests' %>"><%= link_to 'メンバー申請している劇団', user_member_requests_path %></li>
+            <li role="presentation" class="<%= 'active' if action_name == 'member_requests' %>"><%= link_to '申請中の劇団', user_member_requests_path %></li>
           </ul>
       </div>
     </li>

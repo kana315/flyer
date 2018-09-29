@@ -46,6 +46,7 @@
           <%= link_to "お気に入り登録", new_user_registration_path, class:"btn btn-warning" %>
         <% end %>
         <p class="divider"></p>
+        <p><%= @post.created_at %></p>
         <p>お気に入り<%= @favorites.count %>件</p>
       </div>
     </li>
@@ -76,12 +77,12 @@
           </div>
           <div class="article_item">
             <h4 class="title"><a name="tag4">日時</a></h4>
-            <p>
+            <p class="point_text">
               <%= @post.start_date %>
               <% if @post.end_date.present? %>
-                <%= @post.end_date %>
+                ～<%= @post.end_date %>
               <% end %>
-            </p>
+            </p><br>
             <p><%= simple_format(@post.details_datetime) %></p>
           </div>
           <div class="article_item">
@@ -90,7 +91,7 @@
             <p><%= @post.address_prefecture_name %></p>
             <p><%= @post.address_city %></p>
             <p><%= @post.address_street %></p>
-            <p><%= @post.address_bullding %></p>
+            <p><%= @post.address_bullding %></p><br>
             <p><%= simple_format(@post.details_access) %></p>
           </div>
         </div>
