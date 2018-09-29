@@ -20,6 +20,8 @@
       <br>
       <%= link_to "メンバー申請", member_request_troupe_path(@troupe.id) %>
     <% end %>
+    <p class="divider"></p>
+    <p class="point_text"><%= @troupe_followings.count %>フォロー</p>
   </div>
 </li>
 
@@ -27,9 +29,12 @@
   <div class="user_index">
       <ul class="nav nav-tabs">
         <li role="presentation" class="<%= 'active' if action_name == 'posts' %>"><%= link_to '投稿一覧', troupe_posts_path %></li>
-        <li role="presentation" class="<%= 'active' if action_name == 'member_relations' %>"><%= link_to 'メンバー一覧', member_relations_troupe_path %></li>
+        <li role="presentation" class="<%= 'active' if action_name == 'member_relations' %>"><a href="/troupes/2/member_relations">メンバー <span class="badge badge-orange"><%= @members.count+1 %></span></a></li>
         <% if current_user.id == @troupe.user_id %>
-        <li role="presentation" class="<%= 'active' if action_name == 'waiting_members' %>"><%= link_to 'メンバー申請', waiting_members_troupe_path %></li>
+          <li role="presentation" class="<%= 'active' if action_name == 'waiting_members' %>"><a href="/troupes/2/waiting_members">メンバー申請
+            <% if @member_requests.present? %>
+              <span class="badge"><%= @member_requests.count %></span>
+            <% end %></a></li>
         <% end %>
       </ul>
   </div>
