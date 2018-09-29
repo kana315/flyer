@@ -4,7 +4,7 @@
       <p><%= image_tag @troupe.icon %></p>
       <h1><%= @troupe.name %></h1>
       <p><%= simple_format(@troupe.caption) %></p>
-      <%= link_to "編集", edit_troupe_path(@troupe.id), class:"btn btn-warning" %>
+      <%= link_to "編集", edit_troupe_path(@troupe.id), class:"btn btn-warning btn-margin" %>
     <% else %>
       <p><%= image_tag @troupe.icon %></p>
       <h3><%= @troupe.name %></h3>
@@ -12,13 +12,18 @@
 
       <% if @troupe_following.present? %>
         <%= link_to "フォロー解除", troupe_following_path(@troupe_following.id),
-            method: :delete, class:"btn delete_button" %>
+            method: :delete, class:"btn delete_button btn-margin" %>
       <% else %>
         <%= link_to "フォローする", troupe_followings_path(troupe_id: @troupe.id),
-            method: :post, class:"btn btn-primary" %>
+            method: :post, class:"btn btn-primary btn-margin" %>
       <% end %>
-      <br>
-      <%= link_to "メンバー申請", member_request_troupe_path(@troupe.id) %>
+      <% if @member_requests.where(user_id: current_user.id).present? %>
+        <%= link_to "メンバー申請中", member_request_troupe_path(@troupe.id), class:"btn delete_button btn-margin" %>
+      <% elsif @members.where(user_id: current_user.id).present? %>
+        <%= link_to "メンバー登録されています", member_request_troupe_path(@troupe.id), class:"btn delete_button btn-margin" %>
+      <% else %>
+        <%= link_to "メンバー申請", member_request_troupe_path(@troupe.id), class:"btn btn-info btn-margin" %>
+      <% end %>
     <% end %>
     <p class="divider"></p>
     <p class="point_text"><%= @troupe_followings.count %>フォロー</p>
