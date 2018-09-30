@@ -1,28 +1,29 @@
 <li class="col-xs-offset-2 col-xs-8 col-sm-offset-0 col-sm-4 col-md-offset-0 col-md-3">
   <div class="user_area">
     <% if current_user.id == @troupe.user_id %>
-      <p><%= image_tag @troupe.icon %></p>
-      <h1><%= @troupe.name %></h1>
+      <%= image_tag @troupe.icon, class:"troupe_icon" %>
+      <h3><%= @troupe.name %></h3>
       <p><%= simple_format(@troupe.caption) %></p>
       <%= link_to "編集", edit_troupe_path(@troupe.id), class:"btn btn-warning btn-margin" %>
     <% else %>
-      <p><%= image_tag @troupe.icon %></p>
+      <%= image_tag @troupe.icon, class:"troupe_icon" %>
       <h3><%= @troupe.name %></h3>
       <p><%= simple_format(@troupe.caption) %></p>
 
       <% if @troupe_following.present? %>
         <%= link_to "フォロー解除", troupe_following_path(@troupe_following.id),
-            method: :delete, class:"btn delete_button btn-margin" %>
+            method: :delete, class:"btn btn-delete btn-margin" %>
       <% else %>
         <%= link_to "フォローする", troupe_followings_path(troupe_id: @troupe.id),
             method: :post, class:"btn btn-primary btn-margin" %>
       <% end %>
+      <br>
       <% if @member_requests.where(user_id: current_user.id).present? %>
-        <%= link_to "メンバー申請中", member_request_troupe_path(@troupe.id), class:"btn delete_button btn-margin" %>
+        <%= link_to "メンバー申請中", member_request_troupe_path(@troupe.id), class:"btn btn-delete btn-margin" %>
       <% elsif @members.where(user_id: current_user.id).present? %>
-        <%= link_to "メンバー登録されています", member_request_troupe_path(@troupe.id), class:"btn delete_button btn-margin" %>
+        <%= link_to "メンバー登録されています", member_request_troupe_path(@troupe.id), class:"btn btn-delete btn-margin" %>
       <% else %>
-        <%= link_to "メンバー申請", member_request_troupe_path(@troupe.id), class:"btn btn-info btn-margin" %>
+        <%= link_to "メンバー申請", member_request_troupe_path(@troupe.id), class:"btn btn-default btn-margin" %>
       <% end %>
     <% end %>
     <p class="divider"></p>
@@ -34,10 +35,10 @@
   <div class="user_index">
       <ul class="nav nav-tabs">
         <li role="presentation" class="<%= 'active' if action_name == 'posts' %>"><%= link_to '投稿一覧', troupe_posts_path %></li>
-        <li role="presentation" class="<%= 'active' if action_name == 'member_relations' %>"><a href="/troupes/2/member_relations">メンバー<span class="bracket">(<%= @members.count+1 %>人)</span></a></li>
+        <li role="presentation" class="<%= 'active' if action_name == 'member_relations' %>"><a href="/troupes/<%= @troupe.id %>/member_relations">メンバー<span class="bracket">(<%= @members.count+1 %>人)</span></a></li>
         <% if current_user.id == @troupe.user_id %>
           <li role="presentation" class="<%= 'active' if action_name == 'waiting_members' %>">
-            <a href="/troupes/2/waiting_members">メンバー申請
+            <a href="/troupes/<%= @troupe.id %>/waiting_members">メンバー申請
               <% if @member_requests.present? %>
                 <span class="bracket">(<%= @member_requests.count %>件)</span>
               <% end %>

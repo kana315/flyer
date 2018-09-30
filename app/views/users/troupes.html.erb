@@ -3,20 +3,26 @@
     <%= render 'user_nav' %>
 
     <li class="col-xs-12 col-sm-8 col-md-9">
-      <div class="article user_index">
+      <div class="article user_content">
         <% if @admin_troupes.present? ||  @member_troupes.present? %>
           <div class="troupe_index">
             <% @admin_troupes.each do |troupe| %>
               <div class="troupe_area">
-                <%= image_tag troupe.icon, class:"troupe_section" %><br>
-                <%= link_to troupe.name, troupe_path(troupe.id), class:"troupe_name" %>
-                <%= link_to '劇団管理', troupe_path(troupe.id), class:"admin_link" %>
+                <div class="link_area">
+                  <%= link_to image_tag(troupe.icon), troupe_path(troupe.id), class:"troupe_icon_link" %>
+                  <%= link_to troupe.name, troupe_path(troupe.id), class:"name_link" %>
+                </div>
+                <% if current_user.id == troupe.user_id %>
+                  <%= link_to '劇団管理', troupe_path(troupe.id), class:"admin_link" %>
+                <% end %>
               </div>
             <% end %>
             <% @member_troupes.each do |troupe| %>
               <div class="troupe_area">
-              <%= image_tag troupe.icon, class:"troupe_section" %><br>
-              <%= link_to troupe.name, troupe_path(troupe.id), class:"troupe_name" %>
+                <div class="link_area">
+                  <%= link_to image_tag(troupe.icon), troupe_path(troupe.id), class:"troupe_icon_link" %>
+                  <%= link_to troupe.name, troupe_path(troupe.id), class:"name_link" %>
+                </div>
               </div>
           <% end %>
           </div>

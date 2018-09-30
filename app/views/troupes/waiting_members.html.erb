@@ -1,12 +1,14 @@
 <ul class="row">
   <%= render 'troupe_nav' %>
   <li class="col-xs-12 col-sm-8 col-md-9">
-    <div class="user_index">
+    <div class="user_content">
       <% if @member_requests.present? %>
         <% @member_requests.each do |request| %>
           <div class="troupe_area">
-              <%= image_tag request.user.icon, class:"troupe_section" %>
-              <%= link_to request.user.name, user_path(request.user_id), class:"troupe_name" %>
+            <div class="link_area">
+              <%= link_to image_tag(request.user.icon), user_path(request.user_id), class:"user_icon_link" %>
+              <%= link_to request.user.name, user_path(request.user_id), class:"name_link" %>
+            </div>
               <%= link_to 'メンバー登録', member_relations_path(troupe_id: @troupe.id, user_id:request.user),
                 method: :post, class:"btn btn-success index-btn" %>
           </div>

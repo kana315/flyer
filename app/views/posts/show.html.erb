@@ -24,7 +24,7 @@
     <li class="col-xs-12 col-sm-4 col-md-2">
       <div class="side_article">
         <p>
-          <%= image_tag @post.troupe.icon, class:"troupe_section" %>
+          <%= link_to image_tag(@post.troupe.icon), troupe_path(@post.troupe.id), class:"troupe_icon_link" %>
           <%= link_to find_troupe(@post), troupe_path(@post.troupe.id) %>
         </p>
         <h3><%= @post.title %></h3>

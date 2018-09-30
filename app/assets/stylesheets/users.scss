@@ -179,6 +179,8 @@ li {
   margin: auto;
   padding: 20px;
   background-color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #ddd;
 }
 
 .title {
@@ -277,14 +279,8 @@ textarea {
   background-color: #ffffff;
   padding: 20px 10px 10px 10px;
   margin: 2px;
-  box-shadow: 0px 1px 0.5px #a8a8a8;
-
-}
-
-.user_area img{
-  width: 60px;
-  height: 60px;;
-  border-radius: 30px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
 }
 
 .user_area p{
@@ -311,10 +307,21 @@ ul.row {
 .user_index {
   padding: 15px;
   background-color: #ffffff;
+  border-radius: 5px 5px 0px 0px;
+  border: 1px solid #ddd;
+  border-bottom: none;
 }
 
 .user_index>>nav>li>a {
   display: inline-block;
+}
+
+.user_content {
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 0px 0px 5px 5px;
+  border: 1px solid #ddd;
+  border-top: none;
 }
 
 a{
@@ -326,15 +333,22 @@ a{
   text-align: center;
 }
 
+.user_icon {
+  border-radius: 40px;
+  height: 80px;
+  width: 80px;
+  padding:0;
+  margin:0;
+}
 
 footer {
   width: 100%;
   height: 25px;
   background-color: #ffffff;
   border: solid 1px #c0c0c0;
-  color: #404040;
+  color: #808080;
 }
 
 footer p{
-  font-size: 14px;
+  font-size: 13px;
 }

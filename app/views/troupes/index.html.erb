@@ -12,10 +12,12 @@
   <% if @result.any? %>
   <div class="troupe_index">
     <% @result.each do |result| %>
-      <p>
-        <%= image_tag result.icon, class:"troupe_section" %>
-        <%= link_to result.name, troupe_path(result.id) %>
-      </p>
+      <div class="troupe_area">
+        <div class="link_area">
+          <%= link_to image_tag(result.icon), troupe_path(result.id), class:"troupe_icon_link" %>
+          <%= link_to result.name, troupe_path(result.id), class:"name_link" %>
+        </div>
+      </div>
     <% end %>
       </div>
   <% else %>
