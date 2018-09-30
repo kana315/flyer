@@ -1,10 +1,10 @@
 <article class="article">
   <h2 class="title">劇団一覧</h2>
 
-  <%= search_form_for @q do |f| %>
+  <%= search_form_for @search do |f| %>
     <div class="search-form">
-      <%= f.text_field :keywords, required: false, value: params.dig(:q, :keywords),
-                       class:"form-control" %>
+      <%= f.search_field :name_or_caption_cont,
+          class: "form-control" %>
     </div>
     <%= f.submit "検索", class: "search-button" %>
   <% end %>

@@ -6,8 +6,8 @@ class PostsController < ApplicationController
   before_action :set_post_params, only: [:confirm, :create]
 
   def index
-    @q = Post.with_keywords(params.dig(:q, :keywords)).ransack(params[:q])
-    @result = @q.result.page(params[:page]).per(24).order("id DESC")
+    @search = Post.ransack(params[:q])
+    @result = @search.result.page(params[:page]).per(24).order("id DESC")
   end
 
   def new

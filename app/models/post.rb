@@ -17,15 +17,6 @@ class Post < ApplicationRecord
   mount_uploader :flyer_front, ImageUploader
   mount_uploader :flyer_back, ImageUploader
 
-  scope :with_keywords, -> keywords {
-    if keywords.present?
-      columns = [:title, :member]
-      where(keywords.split(/[[:space:]]/).reject(&:empty?).map {|keyword|
-        columns.map { |a| arel_table[a].matches("%#{keyword}%") }.inject(:or)
-      }.inject(:and))
-    end
-  }
-
   private
   def start_date_cannot_be_latter_than_end_date
     if end_date.present?
