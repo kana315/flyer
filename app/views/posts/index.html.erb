@@ -1,17 +1,15 @@
-
-<h2 class="title">投稿一覧</h2>
-
-<div class="search_area">
-  <%= search_form_for @search do |f| %>
-    <div class="search-form">
-      <%= f.search_field :troupe_name_or_title_or_address_prefecture_name_or_caption_cont,
-          class: "form-control", placeholder: "キーワードで検索"  %>
-    </div>
-    <%= f.submit "検索", class: "search-button" %>
-  <% end %>
-</div>
-
 <div class="index_area">
+  <h2 class="title">投稿一覧</h2>
+
+  <div class="search_area">
+    <%= search_form_for @search do |f| %>
+      <div class="search-form">
+        <%= f.search_field :troupe_name_or_title_or_address_prefecture_name_or_caption_cont,
+            class: "form-control", placeholder: "キーワードで検索"  %>
+      </div>
+      <%= f.submit "検索", class: "search-button" %>
+    <% end %>
+  </div>
   <% if @result.any? %>
     <% @result.each do |result| %>
       <div class="user_post_index">
