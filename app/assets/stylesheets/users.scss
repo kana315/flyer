@@ -5,6 +5,10 @@ body {
   padding: 0;
 }
 
+.container-block {
+  padding-top: 20px;
+}
+
 li {
   list-style: none;
 }
@@ -57,14 +61,19 @@ li {
 }
 
  .top_nav {
-   padding: 10px 5px;
+   padding: 0;
    color: #000000;
  }
 
 .navbar-default .navbar-nav > li > a {
-  padding-top: 7px !important;
-  padding-bottom: 7px !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  line-height: 40px;
   color: #000000;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  background-color: #eeeeee;
 }
 
 .dropdown-toggle img{
@@ -184,9 +193,10 @@ li {
 }
 
 .title {
-  border-bottom: solid 1px #808080;
+  border-bottom: solid 1px #000000;
   padding: 7px;
-  margin: 20px;
+  margin: 20px auto;
+  max-width: 770px;
 }
 
 .form_table {
@@ -317,7 +327,7 @@ ul.row {
 }
 
 .user_content {
-  padding: 15px;
+  padding: 10px;
   background-color: #ffffff;
   border-radius: 0px 0px 5px 5px;
   border: 1px solid #ddd;

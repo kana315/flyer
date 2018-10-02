@@ -6,6 +6,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <meta  name="viewport" content="width=device-width">
   </head>
 
   <body>
@@ -53,9 +55,16 @@
       </div><!-- /.container-fluid -->
     </nav>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <% if flash[:notice] %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if flash[:alert] %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+
+    <div class="container-block">
+      <%= yield %>
+    </div>
   </div>
   </body>
   <footer>

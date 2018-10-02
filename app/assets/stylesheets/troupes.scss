@@ -1,17 +1,16 @@
 
 .troupe_index {
   margin: auto;
-  text-align: left;
 }
 
 .user_content>.troupe_index {
-  padding: 0 20px;
+  padding: 0;
 }
 
 .troupe_area {
   display: inline-block;
-  width: 128px;
-  margin: 10px;
+  width: 112px;
+  margin: 6px;
   vertical-align: top;
   text-align: center;
 }
@@ -71,8 +70,8 @@
 }
 
 .user_post_index {
-  width: 131px;
-  margin: 20px 10px;
+  width: 120px;
+  margin: 20px 5px;
   display: inline-block;
   border-bottom: solid 1px #e0e0e0;
   vertical-align: top;
@@ -82,7 +81,7 @@
 
 .user_post_index img {
   display: table-cell;
-  max-width: 131px;
+  max-width: 120px;
   height: auto;
 }
 
